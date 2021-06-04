@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import game.viviGame.testGame.display.Display;
+import game.viviGame.testGame.gfx.ImageLoader;
+
+import java.awt.image.BufferedImage;
 
 public class Game implements Runnable{
 	
@@ -18,6 +21,9 @@ public class Game implements Runnable{
 	private BufferStrategy bs;
 	private Graphics g;
 	
+	private BufferedImage testImage;
+	
+	
 	public Game(String title, int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -26,6 +32,7 @@ public class Game implements Runnable{
 	
 	private void init() {
 		display = new Display(title, width, height);
+		testImage = ImageLoader.loadImage("/sprite/fireball.png");
 	}
 	
 	private void tick() {
@@ -44,8 +51,8 @@ public class Game implements Runnable{
 		g.clearRect(0, 0, width, height);
 		// Draw
 		// x:0 y:0 is top left of the screen
-		g.setColor(Color.green);
-		g.drawRect(10,50, 300,300);
+		//g.setColor(Color.green);
+		g.drawImage(testImage,20, 20, null);
 		
 		// End draw
 		bs.show();
